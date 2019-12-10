@@ -65,5 +65,6 @@ class LoginWindow(tk.Frame):
             res = db.db.user_login(data)
             if res:
                 messagebox.showinfo("Message", "Login Successfully")
+                self.controller.show_frame("HomeWindow", "Home Page")
             else:
                 messagebox.showinfo("Alert!", "Wrong username/password")

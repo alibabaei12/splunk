@@ -12,7 +12,7 @@ class RegisterWindow(tk.Frame):
         self.controller = controller
 
 
-        self.img = tk.PhotoImage(file='img/login-icon.png')
+        self.img = tk.PhotoImage(file='img/Register-128.png')
 
         self.label = tk.Label(self, image = self.img)
         self.label.pack(side="top", fill="x", pady=10)
@@ -74,6 +74,6 @@ class RegisterWindow(tk.Frame):
             print(res)
             if res == 1:
                 messagebox.showinfo("Message", "Register Successfully")
-                self.controller.show_frame("StartPage", "Start Page")
+                self.controller.show_frame("HomeWindow", "Home Page")
             else:
                 messagebox.showinfo("Alert!", "couldn't register")

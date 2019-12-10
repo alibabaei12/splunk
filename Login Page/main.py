@@ -2,6 +2,7 @@ import tkinter as tk                # python 3
 from tkinter import font  as tkfont # python 3
 from LoginPage import LoginWindow
 from RegisterPage import RegisterWindow
+from HomePage import HomeWindow
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -18,7 +19,7 @@ class SampleApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
         self.frames = {}
-        for F in (StartPage, LoginWindow, RegisterWindow):
+        for F in (StartPage, LoginWindow, RegisterWindow, HomeWindow):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -44,8 +45,11 @@ class StartPage(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button1 = tk.Button(self, text="Login",
-                            command=lambda: controller.show_frame("LoginWindow", "Login Page"))
+        # button1 = tk.Button(self, text="Login",
+        #                     command=lambda: controller.show_frame("LoginWindow", "Login Page"))
+        button1 = tk.Button(self, text="Home",
+                            command=lambda: controller.show_frame("HomeWindow", "Home Page"))
+
         button2 = tk.Button(self, text="Register",
                             command=lambda: controller.show_frame("RegisterWindow", "Register Page"))
         button1.pack()
