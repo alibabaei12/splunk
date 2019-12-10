@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e2ca6d6c-d05b-46b4-9343-9938bef119e3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UcUdIlGDOVW0UmaAggP1wUuFAQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Images" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="LoginPage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Login Page" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LoginPage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Parent" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Login Page" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parent.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Login Page" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.Parent" />
+        <item itemvalue="Python.LoginPage" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2ca6d6c-d05b-46b4-9343-9938bef119e3" name="Default Changelist" comment="" />
+      <created>1575655462528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575655462528</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="155" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575677951048">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="155" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575658008302" />
+    <state x="155" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.963@0.23.1680.963" timestamp="1575677951048" />
+    <state width="1659" height="206" key="GridCell.Tab.0.bottom" timestamp="1575939341918">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state width="813" height="206" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575934331015" />
+    <state width="1659" height="206" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1575935898421" />
+    <state width="1659" height="206" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1575936588029" />
+    <state width="1659" height="206" key="GridCell.Tab.0.bottom/0.23.1680.966@0.23.1680.966" timestamp="1575939341918" />
+    <state width="1659" height="206" key="GridCell.Tab.0.bottom/0.23.1680.967@0.23.1680.967" timestamp="1575939177472" />
+    <state width="1659" height="206" key="GridCell.Tab.0.center" timestamp="1575939341917">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state width="813" height="206" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575934331013" />
+    <state width="1659" height="206" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1575935898420" />
+    <state width="1659" height="206" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1575936588028" />
+    <state width="1659" height="206" key="GridCell.Tab.0.center/0.23.1680.966@0.23.1680.966" timestamp="1575939341917" />
+    <state width="1659" height="206" key="GridCell.Tab.0.center/0.23.1680.967@0.23.1680.967" timestamp="1575939177472" />
+    <state width="1659" height="206" key="GridCell.Tab.0.left" timestamp="1575939341917">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state width="813" height="206" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575934331013" />
+    <state width="1659" height="206" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1575935898420" />
+    <state width="1659" height="206" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1575936588028" />
+    <state width="1659" height="206" key="GridCell.Tab.0.left/0.23.1680.966@0.23.1680.966" timestamp="1575939341917" />
+    <state width="1659" height="206" key="GridCell.Tab.0.left/0.23.1680.967@0.23.1680.967" timestamp="1575939177471" />
+    <state width="1659" height="206" key="GridCell.Tab.0.right" timestamp="1575939341917">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state width="813" height="206" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575934331014" />
+    <state width="1659" height="206" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1575935898420" />
+    <state width="1659" height="206" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1575936588029" />
+    <state width="1659" height="206" key="GridCell.Tab.0.right/0.23.1680.966@0.23.1680.966" timestamp="1575939341917" />
+    <state width="1659" height="206" key="GridCell.Tab.0.right/0.23.1680.967@0.23.1680.967" timestamp="1575939177472" />
+    <state x="94" y="338" key="com.intellij.ide.util.TipDialog" timestamp="1575937071013">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state x="94" y="337" key="com.intellij.ide.util.TipDialog/0.23.1680.963@0.23.1680.963" timestamp="1575669903334" />
+    <state x="94" y="338" key="com.intellij.ide.util.TipDialog/0.23.1680.966@0.23.1680.966" timestamp="1575937071013" />
+    <state x="82" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1575934603163">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="82" y="233" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575658206064" />
+    <state x="82" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1680.963@0.23.1680.963" timestamp="1575934603163" />
+  </component>
+</project>
