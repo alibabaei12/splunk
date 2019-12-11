@@ -14,7 +14,8 @@ class SampleApp(tk.Tk):
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
         # will be raised above the others
-        self.geometry("500x600+300+300")
+        self.geometry("700x600+500+200")
+        self.resizable(False,False)
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)

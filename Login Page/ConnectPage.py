@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
 import paramiko
+from pip._vendor.pyparsing import basestring
+
 import db.db
 import HomePage
 import main
@@ -15,21 +17,19 @@ class ConnectWindow(tk.Frame):
 
         self.cmdLabel = Label(self, text="Command:")
         self.cmdLabel.config(font=("Courier", 14, 'bold'))
-        self.cmdLabel.place(x=60, y=250)
+        self.cmdLabel.place(x=60, y=50)
 
         self.command = Entry(self, font='Courier 12', width=40)
-        self.command.place(x=150, y=250)
+        self.command.place(x=150, y=50)
 
         # Making the Connect Button
         self.execute_button = Button(self, text='Execute', font='Courier 15 bold', command=self.connectToServer)
-        self.execute_button.place(x=230, y=410)
+        self.execute_button.place(x=230, y=510)
 
 
     def connectToServer(self):
 
         self.hp = HomePage.ssh_client
-
-
 
         cmd = self.command.get()
         print(cmd)
@@ -37,13 +37,11 @@ class ConnectWindow(tk.Frame):
 
         stdout = stdout.readlines()
 
-        self.prt = Label(self,text = stdout)
-        self.prt.config(font=("Courier", 14, 'bold'))
-        self.prt.place(x=60, y=310)
-        # try:
-        #     with pysftp.Connection(host=self.host_name.get(), username=self.username.get(), password=self.password.get(), cnopts=self.cnopts) as sftp:
-        #         pass
-        # except EXCEPTION as e:
-        #     print(str(e))
+        print(stdout)
 
-
+        self.myscroll = tk.Scrollbar(self, orient='vertical')
+        self.listbox = Listbox(self, yscrollcommand=self.myscroll.set, width=55, height=20)
+        for i in stdout:
+            print(i + "\n")
+            self.listbox.insert(END, "List: ", i)
+        self.listbox.place(x=60, y=110)
