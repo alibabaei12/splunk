@@ -4,6 +4,7 @@ from LoginPage import LoginWindow
 from RegisterPage import RegisterWindow
 from HomePage import HomeWindow
 import ConnectPage
+
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -14,7 +15,7 @@ class SampleApp(tk.Tk):
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
         # will be raised above the others
-        self.geometry("700x600+500+200")
+        self.geometry("630x600+500+200")
         self.resizable(False,False)
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -33,6 +34,7 @@ class SampleApp(tk.Tk):
 
         self.show_frame("StartPage", "Start Page")
 
+
     def show_frame(self, page_name, title):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
@@ -45,16 +47,14 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is the start page", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
         # button1 = tk.Button(self, text="Login",
         #                     command=lambda: controller.show_frame("LoginWindow", "Login Page"))
-        button1 = tk.Button(self, text="Home",
+        button1 = tk.Button(self, text="Home",width="20",height="3",font='Courier 26',
                             command=lambda: controller.show_frame("HomeWindow", "Home Page"))
 
-        button2 = tk.Button(self, text="Register",
+        button2 = tk.Button(self, text="Register",width="20",height="3",font='Courier 26',
                             command=lambda: controller.show_frame("RegisterWindow", "Register Page"))
-        button1.pack()
+        button1.pack(pady="130")
         button2.pack()
 
 

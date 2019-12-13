@@ -42,6 +42,5 @@ class ConnectWindow(tk.Frame):
         self.myscroll = tk.Scrollbar(self, orient='vertical')
         self.listbox = Listbox(self, yscrollcommand=self.myscroll.set, width=55, height=20)
         for i in stdout:
-            print(i + "\n")
-            self.listbox.insert(END, "List: ", i)
+            self.listbox.insert(END, i)
         self.listbox.place(x=60, y=110)
