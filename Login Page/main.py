@@ -3,7 +3,9 @@ from tkinter import font  as tkfont # python 3
 from LoginPage import LoginWindow
 from RegisterPage import RegisterWindow
 from HomePage import HomeWindow
-import ConnectPage
+from FileSystem import FileSystemWindow
+from  ConnectPage import ConnectWindow
+import LogPage
 
 class SampleApp(tk.Tk):
 
@@ -22,7 +24,7 @@ class SampleApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
         self.frames = {}
-        for F in (StartPage, LoginWindow, RegisterWindow, HomeWindow, ConnectPage.ConnectWindow):
+        for F in (StartPage, LoginWindow, RegisterWindow, HomeWindow, ConnectWindow, FileSystemWindow, LogPage.LogWindow):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -40,6 +42,10 @@ class SampleApp(tk.Tk):
         frame = self.frames[page_name]
         self.title(title)
         frame.tkraise()
+        # frame.update()
+
+    def get_page(self, page_class):
+        return self.frames[page_class]
 
 
 class StartPage(tk.Frame):

@@ -42,11 +42,9 @@ class HomeWindow(tk.Frame):
 
     def connectToServer(self):
         # Connect to the server
-
         # host = 35.223.103.101
         # username= alibabaei12
         # password='Amirbaba12345'
-
 
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         #ssh_client.connect(self.host_name.get(), username=self.username, password=self.password)
@@ -55,4 +53,5 @@ class HomeWindow(tk.Frame):
             self.controller.show_frame("ConnectWindow", "Connect Page")
         except EXCEPTION as e:
             print(e)
+
 

@@ -77,3 +77,4 @@ class RegisterWindow(tk.Frame):
                 self.controller.show_frame("HomeWindow", "Home Page")
             else:
                 messagebox.showinfo("Alert!", "couldn't register")
+
