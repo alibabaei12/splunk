@@ -19,20 +19,20 @@ class SampleApp(tk.Tk):
         # will be raised above the others
         self.geometry("630x600+500+200")
         self.resizable(False,False)
-        container = tk.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+        self.container = tk.Frame(self)
+        self.container.pack(side="top", fill="both", expand=True)
+        self.container.grid_rowconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
         self.frames = {}
-        for F in (StartPage, LoginWindow, RegisterWindow, HomeWindow, ConnectWindow, FileSystemWindow, LogPage.LogWindow):
-            page_name = F.__name__
-            frame = F(parent=container, controller=self)
-            self.frames[page_name] = frame
 
-            # put all of the pages in the same location;
-            # the one on the top of the stacking order
-            # will be the one that is visible.
-            frame.grid(row=0, column=0, sticky="nsew")
+        page_name = StartPage.__name__
+        frame = StartPage(parent=self.container, controller=self)
+        self.frames[page_name] = frame
+
+        # put all of the pages in the same location;
+        # the one on the top of the stacking order
+        # will be the one that is visible.
+        frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("StartPage", "Start Page")
 
@@ -44,8 +44,20 @@ class SampleApp(tk.Tk):
         frame.tkraise()
         # frame.update()
 
+
     def get_page(self, page_class):
         return self.frames[page_class]
+
+    def framess(self, class_names):
+        for F in class_names:
+            page_name = F.__name__
+            frame = F(parent=self.container, controller=self)
+            self.frames[page_name] = frame
+
+            # put all of the pages in the same location;
+            # the one on the top of the stacking order
+            # will be the one that is visible.
+            frame.grid(row=0, column=0, sticky="nsew")
 
 
 class StartPage(tk.Frame):
@@ -55,8 +67,10 @@ class StartPage(tk.Frame):
         self.controller = controller
         # button1 = tk.Button(self, text="Login",
         #                     command=lambda: controller.show_frame("LoginWindow", "Login Page"))
+        self.controller.framess([HomeWindow, RegisterWindow])
         button1 = tk.Button(self, text="Home",width="20",height="3",font='Courier 26',
                             command=lambda: controller.show_frame("HomeWindow", "Home Page"))
+
 
         button2 = tk.Button(self, text="Register",width="20",height="3",font='Courier 26',
                             command=lambda: controller.show_frame("RegisterWindow", "Register Page"))

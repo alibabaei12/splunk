@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
 import paramiko
+
+import ConnectPage
 import db.db
 
 global ssh_client
@@ -45,7 +47,7 @@ class HomeWindow(tk.Frame):
         # host = 35.223.103.101
         # username= alibabaei12
         # password='Amirbaba12345'
-
+        self.controller.framess([ConnectPage.ConnectWindow])
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         #ssh_client.connect(self.host_name.get(), username=self.username, password=self.password)
         try:
