@@ -5,7 +5,11 @@ import HomePage
 import Files
 import Folders
 import FileSystem
+import LogsPage
+import OpenFilesPage
+
 currentLocation = "Ali"
+
 class ConnectWindow(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -17,12 +21,19 @@ class ConnectWindow(tk.Frame):
         self.hp = HomePage.ssh_client
 
         # Making the Connect Button
-        self.execute_button = Button(self, text='File System',width="20",height="2", font='Courier 26 bold', command=self.func)
-        self.execute_button.place(x=150, y=110)
+        self.filesys_button = Button(self, text='File System',width="20",height="2", font='Courier 26 bold', command=self.func)
+        self.filesys_button.place(x=150, y=110)
+
+        self.controller.framess([LogsPage.LogsWindow])
+
+        # self.log_button = Button(self, text='Logs',width="20",height="2", font='Courier 26 bold', command=lambda : controller.show_frame("LogsWindow", "Logs Window"))
+        # self.log_button.place(x=150, y=200)
         self.folders_files = []
 
         self.currentPath = "home"
         self.path = "blaaaa"
+
+        self.init_path = "aaaaaa"
     def getCurrentPath(self):
 
         cmd_pwd = "pwd"
@@ -31,12 +42,14 @@ class ConnectWindow(tk.Frame):
 
         stdout = stdout.readlines()
 
-        print("the pwd comment returns: " + str(stdout))
+        # print("the pwd comment returns: " + str(stdout))
         global currentLocation
         currentLocation = stdout[0]
 
         clean = str(stdout)
         self.path = clean[2:len(clean)-4]
+        self.init_path = self.path
+        # print("initial path: " + self.path)
         clean = "Current Location is: " + clean[2:len(clean)-4]
 
         self.currentPath = clean
@@ -47,14 +60,14 @@ class ConnectWindow(tk.Frame):
 
         stdout = stdout.readlines()
 
-        print("the pwd comment returns: " + str(stdout))
+        # print("the pwd comment returns: " + str(stdout))
         st = None
         # see if its a file or folder and get the name as well
         for i in stdout:
             st = i.split(" ")
             name = st[len(st) - 1]
             name = name[0: len(name)-1]
-            print("the name isssss: " + name)
+            # print("the name isssss: " + name)
             if st[0][0] == 'd':
                 folder = Folders.Folder(name, currentLocation)
 
@@ -75,8 +88,6 @@ class ConnectWindow(tk.Frame):
         self.getFile_folders()
         self.getCurrentPath()
 
-        print("fuc was called again")
-
         self.controller.framess([FileSystem.FileSystemWindow])
 
         self.controller.show_frame("FileSystemWindow", "File System Page")
@@ -85,30 +96,37 @@ class ConnectWindow(tk.Frame):
 
         self.folders_files.clear()
         # print("folder name is " + folder_name + " yayaya ")
-        # print("cd current path is: " + self.path)
+        if self.path[len(self.path)-1] == "/":
+            self.path = self.path[0: len(self.path)-1]
+
+        print("cd current path is: " + self.path)
 
         #if you want to go to the previous direcory
         if folder_name == "..":
             parse = self.path.split("/")
             self.path = ""
             # print("cd right before parsing current path is: " + self.path + "/.. ; ls -l")
-
-            parse[len(parse)-1] = parse[len(parse)-1][0:len(parse[len(parse)-1])-1]
+            if parse[len(parse) - 1][len(parse[len(parse) - 1]) - 1:len(parse[len(parse) - 1])] == "\n":
+                #remove the new line at the end of the parse
+                parse[len(parse)-1] = parse[len(parse)-1][0:len(parse[len(parse)-1])-1]
 
             print("the parse is: ", parse)
             for j in parse[0: len(parse)]:
                 self.path += j + "/"
+
             # self.path = self.path[0: len(self.path) - 1]
 
 
-            # print("The Path after parsing : " + self.path[0:len(self.path)-1] + "/.. ; ls -l")
-            self.path = self.path[0:len(self.path)-1]
 
-            command = "cd " + self.path + "/.. ; ls -l"
+            # self.path = self.path[0:len(self.path)-1]
+            print("The Path after parsing : " + self.path )
+            command = "cd " + self.path + ".. ; ls -l"
 
+            print("command is: " + command)
             stdin, stdout, stderr = self.hp.exec_command(command)
-            # print("command is: " + command)
 
+            stderr = stderr.readlines()
+            print("the error is: " , stderr)
             back_path = self.path.split("/")
             # print("the back path is: " , back_path)
             self.path = ""
@@ -119,25 +137,42 @@ class ConnectWindow(tk.Frame):
             # print("the path at the end is: " + self.path)
 
         else:
-            if self.path[len(self.path)-1] == "/":
+
+
+            if len(self.path) > 1 and self.path[len(self.path)-1] == "/":
 
                 self.path += folder_name
                 self.path = self.path[0:len(self.path) - 1]
             else:
 
+
                 self.path += ("/" + folder_name)
+                parse = self.path.split("/")
+                # print("parse is: " , parse)
 
+                self.path = ""
+                # print("cd right before parsing current path is: " + self.path + "/.. ; ls -l")
 
-            # print("the cd path is; " + self.path + " ; ls -l")
+                # remove the new line at the end of the parse
+
+                # print("now parse is: ", parse)
+
+                # print("the last letter is : " , parse[len(parse)-1][len(parse[len(parse)-1])-1:len(parse[len(parse)-1])])
+                if parse[len(parse)-1][len(parse[len(parse)-1])-1:len(parse[len(parse)-1])] == "\n":
+                    parse[len(parse) - 1] = parse[len(parse) - 1][0:len(parse[len(parse) - 1]) - 1]
+                for j in parse[0: len(parse)]:
+                    self.path += j + "/"
+
+                self.path = self.path[0:len(self.path) - 1]
+
+            print("the cd path is; " + self.path + " ; ls -l")
             stdin, stdout, stderr = self.hp.exec_command("cd " + self.path + " ; ls -l")
-
-
 
         self.currentPath = "Current directory is: " + self.path
 
         stdout= stdout.readlines()
 
-        stderr = stderr.readlines()
+
         # print("tttttttttt " + str(stdout))
         # print ( "the error is: " + str(stderr) )
 
@@ -160,3 +195,20 @@ class ConnectWindow(tk.Frame):
 
         self.controller.framess([FileSystem.FileSystemWindow])
         self.controller.show_frame("FileSystemWindow", "File System Page")
+
+    def openFiles(self, file_name):
+        cmd = "cat " + file_name
+
+        stdin, stdout, stderr = self.hp.exec_command(cmd)
+
+        stdout = stdout.readlines()
+
+        app = OpenFilesPage.OpenFiles()
+        app.mainloop()
+
+
+        # clean = str(stdout)
+        # self.path = clean[2:len(clean) - 4]
+        # clean = "Current Location is: " + clean[2:len(clean) - 4]
+        #
+        # self.currentPath = clean

@@ -22,7 +22,7 @@ class FileSystemWindow(tk.Frame):
 
         self.connectPage = self.controller.get_page("ConnectWindow")
         # Current Location
-        print("current path in file sys is: " + self.connectPage.currentPath)
+        # print("current path in file sys is: " + self.connectPage.currentPath)
 
         self.text = self.connectPage.currentPath
 
@@ -87,17 +87,18 @@ class FileSystemWindow(tk.Frame):
 
         cmd_pwd = "pwd"
 
-        print(cmd_pwd)
+        # print(cmd_pwd)
 
         stdin,stdout,stderr = self.hp.exec_command(cmd_pwd)
 
         stdout = stdout.readlines()
 
-        print(stdout)
+        # print(stdout)
         return stdout
         # self.myscroll = tk.Scrollbar(self, orient='vertical')
         # self.listbox = Listbox(self, yscrollcommand=self.myscroll.set, width=55, height=20)
         # for i in stdout:
         #     self.listbox.insert(END, i)
         # self.listbox.place(x=60, y=110)
+
 

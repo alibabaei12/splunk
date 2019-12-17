@@ -41,7 +41,6 @@ class HomeWindow(tk.Frame):
         self.connect_button = Button(self, text='Connect', font='Courier 15 bold', command=self.connectToServer)
         self.connect_button.place(x=230, y=410)
 
-
     def connectToServer(self):
         # Connect to the server
         # host = 35.223.103.101
