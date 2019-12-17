@@ -59,6 +59,9 @@ class SampleApp(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
+    def removeFrame(self, class_name):
+        self.frames.pop(class_name)
+        print("frame was removed")
 
 class StartPage(tk.Frame):
 

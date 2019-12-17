@@ -22,7 +22,7 @@ class ConnectWindow(tk.Frame):
         self.folders_files = []
 
         self.currentPath = "home"
-
+        self.path = "blaaaa"
     def getCurrentPath(self):
 
         cmd_pwd = "pwd"
@@ -36,6 +36,7 @@ class ConnectWindow(tk.Frame):
         currentLocation = stdout[0]
 
         clean = str(stdout)
+        self.path = clean[2:len(clean)-4]
         clean = "Current Location is: " + clean[2:len(clean)-4]
 
         self.currentPath = clean
@@ -52,13 +53,15 @@ class ConnectWindow(tk.Frame):
         for i in stdout:
             st = i.split(" ")
             name = st[len(st) - 1]
+            name = name[0: len(name)-1]
+            print("the name isssss: " + name)
             if st[0][0] == 'd':
                 folder = Folders.Folder(name, currentLocation)
-                print("folder is " + folder.name)
+
                 self.folders_files.append(folder)
             elif st[0][0] == '-':
                 file = Files.File(name, "empty")
-                print("file name is: " + file.name)
+
                 self.folders_files.append(file)
 
 
@@ -72,7 +75,88 @@ class ConnectWindow(tk.Frame):
         self.getFile_folders()
         self.getCurrentPath()
 
+        print("fuc was called again")
 
         self.controller.framess([FileSystem.FileSystemWindow])
 
+        self.controller.show_frame("FileSystemWindow", "File System Page")
+
+    def cd(self, folder_name):
+
+        self.folders_files.clear()
+        # print("folder name is " + folder_name + " yayaya ")
+        # print("cd current path is: " + self.path)
+
+        #if you want to go to the previous direcory
+        if folder_name == "..":
+            parse = self.path.split("/")
+            self.path = ""
+            # print("cd right before parsing current path is: " + self.path + "/.. ; ls -l")
+
+            parse[len(parse)-1] = parse[len(parse)-1][0:len(parse[len(parse)-1])-1]
+
+            print("the parse is: ", parse)
+            for j in parse[0: len(parse)]:
+                self.path += j + "/"
+            # self.path = self.path[0: len(self.path) - 1]
+
+
+            # print("The Path after parsing : " + self.path[0:len(self.path)-1] + "/.. ; ls -l")
+            self.path = self.path[0:len(self.path)-1]
+
+            command = "cd " + self.path + "/.. ; ls -l"
+
+            stdin, stdout, stderr = self.hp.exec_command(command)
+            # print("command is: " + command)
+
+            back_path = self.path.split("/")
+            # print("the back path is: " , back_path)
+            self.path = ""
+            #getting rid of the new line
+            for k in back_path[0: len(parse)-1]:
+                self.path += k + "/"
+
+            # print("the path at the end is: " + self.path)
+
+        else:
+            if self.path[len(self.path)-1] == "/":
+
+                self.path += folder_name
+                self.path = self.path[0:len(self.path) - 1]
+            else:
+
+                self.path += ("/" + folder_name)
+
+
+            # print("the cd path is; " + self.path + " ; ls -l")
+            stdin, stdout, stderr = self.hp.exec_command("cd " + self.path + " ; ls -l")
+
+
+
+        self.currentPath = "Current directory is: " + self.path
+
+        stdout= stdout.readlines()
+
+        stderr = stderr.readlines()
+        # print("tttttttttt " + str(stdout))
+        # print ( "the error is: " + str(stderr) )
+
+        for i in stdout:
+            st = i.split(" ")
+            name = st[len(st) - 1]
+            if st[0][0] == 'd':
+                folder = Folders.Folder(name, currentLocation)
+
+                self.folders_files.append(folder)
+            elif st[0][0] == '-':
+                file = Files.File(name, "empty")
+
+                self.folders_files.append(file)
+
+        # print("currrr is : " + self.currentPath)
+        # stdin, stdout, stderr = self.hp.exec_command("pwd")
+        # stdout = stdout.readlines()
+        # print("worrkkkk " + str(stdout))
+
+        self.controller.framess([FileSystem.FileSystemWindow])
         self.controller.show_frame("FileSystemWindow", "File System Page")

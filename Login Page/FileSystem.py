@@ -7,11 +7,13 @@ import Files
 import Folders
 import HomePage
 import ConnectPage
+import LogPage
+
+
 class FileSystemWindow(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
 
         self.controller = controller
         self.parent = parent
@@ -29,7 +31,6 @@ class FileSystemWindow(tk.Frame):
         self.cmdLabel.config(font=("Courier", 14, 'bold'))
         self.cmdLabel.place(x=160, y=50)
 
-
         # Show Files
         # Declare a list for folders and files in each path
         # self.folders = []
@@ -38,7 +39,6 @@ class FileSystemWindow(tk.Frame):
         self.x = 50
         self.y = 100
 
-
         # print(len(self???.connectPage.folders))
         self.folder_img = PhotoImage(file='img/folder_icon.png')
         self.adjust_folder_img = self.folder_img.subsample(3,3)
@@ -46,14 +46,29 @@ class FileSystemWindow(tk.Frame):
         self.file_img = PhotoImage(file='img/files.png')
         self.adjust_file_img = self.file_img.subsample(3,3)
 
+
+        self.back_img = PhotoImage(file="img/back-button.png")
+        self.adjust_back_img = self.back_img.subsample(3,3)
+
+        self.back_button = Button(self, width="60", height="50", image=self.adjust_back_img, command=lambda : self.connectPage.cd(".."))
+        self.back_button.place(x= 20, y = 20)
         #print("filesystem folder name is: " + self.connectPage.folders[0].name)
+        self.file_buttons = {}
+        self.folder_buttons = {}
         for i in self.connectPage.folders_files:
             if type(i) == Folders.Folder:
-                self.folder_button = Button(self, width="80", height="70", image=self.adjust_folder_img)
+                self.folder_buttons[i] = Button(self, width="80", height="70", image=self.adjust_folder_img, command=lambda i = i: self.connectPage.cd(i.name))
+
+
             elif type(i) == Files.File:
-                self.folder_button = Button(self, width="80", height="70", image=self.adjust_file_img)
-            self.folder_button.place(x=self.x , y=self.y)
-            self.folder_label = Label(self, text=i.name)
+                self.folder_buttons[i] = Button(self, width="80", height="70", image=self.adjust_file_img)
+
+
+
+        for i in self.folder_buttons.keys():
+
+            self.folder_buttons[i].place(x=self.x, y=self.y)
+            self.folder_label = Label(self, text= i.name)
             self.folder_label.place(x=self.x, y = self.y +90)
             self.x = self.x + 150
             if self.x > 500 :
@@ -62,14 +77,11 @@ class FileSystemWindow(tk.Frame):
             else:
                 continue
 
-
-
-
         #Buttons
         # Making the Connect Button
+        self.controller.framess([LogPage.LogWindow])
         self.execute_button = Button(self, text='View Files',width="13",height="2", font='Courier 18 bold', command=lambda: controller.show_frame("LogWindow", "Log Page"))
         self.execute_button.place(x=430, y=510)
-
 
     def getCurrentPath(self):
 
@@ -88,3 +100,4 @@ class FileSystemWindow(tk.Frame):
         # for i in stdout:
         #     self.listbox.insert(END, i)
         # self.listbox.place(x=60, y=110)
+
