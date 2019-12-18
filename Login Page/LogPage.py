@@ -29,10 +29,11 @@ class LogWindow(tk.Frame):
 
     def connectToServer(self):
 
-        self.hp = HomePage.ssh_client
+        self.hp = self.controller.get_page("HomeWindow").hp
 
         cmd = self.command.get()
         print(cmd)
+
         stdin,stdout,stderr = self.hp.exec_command(cmd)
 
         stdout = stdout.readlines()
